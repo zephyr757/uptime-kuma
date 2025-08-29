@@ -36,6 +36,7 @@ Data persists in `./data`. Exposes the UI on `http://localhost:${KUMA_HOST_PORT:
   - `sudo systemctl daemon-reload && sudo systemctl enable --now uptime-kuma-multi@a`
 
 ## Reverse Proxy Notes
+- Synology DSM guide: see `docs/synology-reverse-proxy.md` for IP/port mapping and GUI steps.
 - Nginx examples for ports 8010/8011/8012 in `docs/reverse-proxy/`.
 - Caddy examples provided; Caddy can handle TLS automatically with public DNS.
 - Ensure upstream points to the correct localhost port for each instance.

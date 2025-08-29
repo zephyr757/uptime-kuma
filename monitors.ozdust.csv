@@ -1,7 +1,5 @@
 name,url,tag,interval
-# Example entries for 192.168.1.36 (ozdust). Replace with your real endpoints.
-Uptime Kuma (ozdust),http://192.168.1.36:3001,ozdust,60
-TV (Sonarr),https://tv.ozdust.me,ozdust,60
-Status Page,https://status.ozdust.me,ozdust,60
-Wave,https://wave.ozdust.me,ozdust,60
-PBX,https://pbx.ozdust.me,ozdust,60
+# Prefilled for 192.168.1.36 (ozdust). Adjust hostnames as needed.
+Uptime Kuma UI (host port),http://192.168.1.36:8010,ozdust,60
+Uptime Kuma UI (public RP),https://status.ozdust.me,ozdust,60
+# Add more below as needed

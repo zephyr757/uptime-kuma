@@ -1,7 +1,5 @@
 name,url,tag,interval
-# Example entries for 192.168.1.54 (miniverse). Replace with your real endpoints.
-Uptime Kuma (miniverse),http://192.168.1.54:3001,miniverse,60
-Jellyfin,https://jellyfin.ozdust.synology.me,miniverse,60
-Home Assistant,https://ha.ozdust.me,miniverse,60
-Vaultwarden,https://vault.ozdust.me,miniverse,60
-Paperless,https://paperless.ozdust.me,miniverse,60
+# Prefilled for 192.168.1.54 (miniverse). Adjust hostnames as needed.
+Uptime Kuma UI (host port),http://192.168.1.54:8010,miniverse,60
+Uptime Kuma UI (public RP),https://status-miniverse.example.com,miniverse,60
+# Add more below as needed
