@@ -54,6 +54,8 @@ Data persists in a Docker named volume `kuma-data`. Exposes the UI on `http://lo
 - Miniverse (192.168.1.54):
   - `cp .env.miniverse.sample .env && make check-ports && make up && make smoke`
   - Import monitors: `Settings → Import/Export → Import` and select `monitors.miniverse.json`.
+  - Includes cross-checks to monitor the Ozdust Kuma (LAN and public).
 - Ozdust (192.168.1.36):
   - `cp .env.ozdust.sample .env && make check-ports && make up && make smoke`
   - Import monitors: `Settings → Import/Export → Import` and select `monitors.ozdust.json`.
+  - Includes cross-checks to monitor the Miniverse Kuma (LAN and public).
