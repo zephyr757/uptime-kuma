@@ -1,0 +1,15 @@
+[Unit]
+Description=Uptime Kuma via Docker Compose
+Requires=docker.service
+After=network-online.target docker.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+WorkingDirectory=/opt/uptime-kuma  # CHANGE to your repo path
+ExecStart=/usr/local/bin/docker compose up -d
+ExecStop=/usr/local/bin/docker compose down
+TimeoutStartSec=0
+
+[Install]
+WantedBy=multi-user.target

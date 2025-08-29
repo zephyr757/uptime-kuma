@@ -1,0 +1,18 @@
+[Unit]
+Description=Uptime Kuma (multi-instance) via Docker Compose - %i
+Requires=docker.service
+After=network-online.target docker.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+# Set WorkingDirectory to your repo path for this instance
+WorkingDirectory=/opt/uptime-kuma  # CHANGE to your repo path
+Environment=COMPOSE_FILE=docker-compose.yml:docker-compose.override.yml
+Environment=COMPOSE_PROJECT_NAME=kuma-%i
+ExecStart=/usr/local/bin/docker compose up -d
+ExecStop=/usr/local/bin/docker compose down
+TimeoutStartSec=0
+
+[Install]
+WantedBy=multi-user.target
