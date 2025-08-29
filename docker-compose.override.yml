@@ -1,0 +1,28 @@
+# Optional: run multiple Kuma instances for different clients
+services:
+  uptime-kuma-a:
+    image: louislam/uptime-kuma:${KUMA_TAG:-1}
+    container_name: uptime-kuma-a
+    volumes:
+      - ./data-a:/app/data
+    ports:
+      - "${KUMA_HOST_PORT_A:-8010}:3001"
+    restart: unless-stopped
+
+  uptime-kuma-b:
+    image: louislam/uptime-kuma:${KUMA_TAG:-1}
+    container_name: uptime-kuma-b
+    volumes:
+      - ./data-b:/app/data
+    ports:
+      - "${KUMA_HOST_PORT_B:-8011}:3001"
+    restart: unless-stopped
+
+  uptime-kuma-c:
+    image: louislam/uptime-kuma:${KUMA_TAG:-1}
+    container_name: uptime-kuma-c
+    volumes:
+      - ./data-c:/app/data
+    ports:
+      - "${KUMA_HOST_PORT_C:-8012}:3001"
+    restart: unless-stopped

@@ -1,0 +1,44 @@
+{
+  "version": 2,
+  "tags": [
+    { "name": "client:a", "color": "#1f77b4" },
+    { "name": "client:b", "color": "#ff7f0e" }
+  ],
+  "monitors": [
+    {
+      "name": "Status Page",
+      "type": "http",
+      "url": "https://status.example.com",
+      "interval": 60,
+      "maxretries": 3,
+      "retryInterval": 20,
+      "notificationIDList": [],
+      "tags": ["client:a"],
+      "method": "GET"
+    },
+    {
+      "name": "Sonarr",
+      "type": "http",
+      "url": "https://tv.example.com",
+      "interval": 60,
+      "tags": ["client:a"],
+      "method": "GET"
+    },
+    {
+      "name": "Jellyfin",
+      "type": "http",
+      "url": "https://jellyfin.example.com",
+      "interval": 60,
+      "tags": ["client:b"],
+      "method": "GET"
+    },
+    {
+      "name": "Home Assistant",
+      "type": "http",
+      "url": "https://ha.example.com",
+      "interval": 60,
+      "tags": ["client:b"],
+      "method": "GET"
+    }
+  ]
+}
