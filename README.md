@@ -16,7 +16,7 @@ Data persists in `./data`. Exposes the UI on `http://localhost:${KUMA_HOST_PORT:
 
 ## Multi-Client Setup
 - Option 1 (recommended): Single Kuma instance with Tags per client and multiple Status Pages. Import monitors via Settings → Import/Export using `monitors.template.json` as a starting point.
-- Option 2: Multiple Kuma instances for isolation. Enable `docker-compose.override.yml` and set per-instance ports in `.env` (`KUMA_HOST_PORT_A=8010`, `KUMA_HOST_PORT_B=8011`, ...). Each instance must use a unique data folder (e.g., `./data-a`, `./data-b`).
+- Option 2: Multiple Kuma instances for isolation. Use `docker-compose.multi.yml` and set per-instance ports in `.env` (`KUMA_HOST_PORT_A=8010`, `KUMA_HOST_PORT_B=8011`, ...). Each instance must use a unique data folder (e.g., `./data-a`, `./data-b`).
 
 ## Import Example
 - Use `monitors.template.json` as a template. Replace example domains with your endpoints (e.g., `https://tv.ozdust.me`, `https://jellyfin.ozdust.synology.me`, etc.).
@@ -31,7 +31,7 @@ Data persists in `./data`. Exposes the UI on `http://localhost:${KUMA_HOST_PORT:
 - Edit `systemd/uptime-kuma.service` and set `WorkingDirectory` to your repo path; then:
   - `sudo cp systemd/uptime-kuma.service /etc/systemd/system/`
   - `sudo systemctl daemon-reload && sudo systemctl enable --now uptime-kuma`
-- For multi-instance with override: use the templated unit `systemd/uptime-kuma-multi@.service`:
+- For multi-instance: use the templated unit `systemd/uptime-kuma-multi@.service`:
   - `sudo cp systemd/uptime-kuma-multi@.service /etc/systemd/system/`
   - `sudo systemctl daemon-reload && sudo systemctl enable --now uptime-kuma-multi@a`
 
