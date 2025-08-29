@@ -12,11 +12,11 @@ This repository provides a minimal Docker Compose setup for running Uptime Kuma 
 - Update image and redeploy: `docker compose pull && docker compose up -d`
 - Logs: `docker compose logs -f uptime-kuma`
 
-Data persists in `./data`. Exposes the UI on `http://localhost:${KUMA_HOST_PORT:-8010}`.
+Data persists in a Docker named volume `kuma-data`. Exposes the UI on `http://localhost:${KUMA_HOST_PORT:-8010}`.
 
 ## Multi-Client Setup
 - Option 1 (recommended): Single Kuma instance with Tags per client and multiple Status Pages. Import monitors via Settings → Import/Export using `monitors.template.json` as a starting point.
-- Option 2: Multiple Kuma instances for isolation. Use `docker-compose.multi.yml` and set per-instance ports in `.env` (`KUMA_HOST_PORT_A=8010`, `KUMA_HOST_PORT_B=8011`, ...). Each instance must use a unique data folder (e.g., `./data-a`, `./data-b`).
+- Option 2: Multiple Kuma instances for isolation. Use `docker-compose.multi.yml` and set per-instance ports in `.env` (`KUMA_HOST_PORT_A=8010`, `KUMA_HOST_PORT_B=8011`, ...). Each instance uses a separate named volume (`kuma-data-a`, `kuma-data-b`, ...).
 
 ## Import Example
 - Use `monitors.template.json` as a template. Replace example domains with your endpoints (e.g., `https://tv.ozdust.me`, `https://jellyfin.ozdust.synology.me`, etc.).
@@ -45,6 +45,10 @@ Data persists in `./data`. Exposes the UI on `http://localhost:${KUMA_HOST_PORT:
 - Use per-host env files (examples: `.env.miniverse.sample`, `.env.ozdust.sample`) and copy to `.env` on each machine.
 - Optionally set `COMPOSE_PROJECT_NAME` to namespace containers/networks per host.
 - Both hosts can expose port 8010 independently; choose different ports only if a conflict exists on a given machine.
+
+## Backups
+- Create: `make backup` (writes `./backups/kuma-data.<timestamp>.tgz`)
+- Restore: `make restore BACKUP=backups/<file>.tgz`
 
 ## Per-Host Setup (Recommended)
 - Miniverse (192.168.1.54):

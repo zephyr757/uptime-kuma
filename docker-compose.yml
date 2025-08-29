@@ -8,7 +8,10 @@ services:
     environment:
       - TZ=${TZ:-UTC}
     volumes:
-      - ./data:/app/data
+      - kuma-data:/app/data
     ports:
       - "${KUMA_HOST_PORT:-8010}:3001"
     restart: unless-stopped
+
+volumes:
+  kuma-data:
