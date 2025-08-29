@@ -1,0 +1,13 @@
+# OS/editor
+.DS_Store
+.vscode/
+
+# Env/config
+.env
+
+# Runtime data (persisted by container)
+data/*
+!data/.gitkeep
+
+# Node/JS (in case of local tooling)
+node_modules/
