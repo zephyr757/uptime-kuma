@@ -45,3 +45,11 @@ Data persists in `./data`. Exposes the UI on `http://localhost:${KUMA_HOST_PORT:
 - Use per-host env files (examples: `.env.miniverse.sample`, `.env.ozdust.sample`) and copy to `.env` on each machine.
 - Optionally set `COMPOSE_PROJECT_NAME` to namespace containers/networks per host.
 - Both hosts can expose port 8010 independently; choose different ports only if a conflict exists on a given machine.
+
+## Per-Host Setup (Recommended)
+- Miniverse (192.168.1.54):
+  - `cp .env.miniverse.sample .env && make check-ports && make up && make smoke`
+  - Import monitors: `Settings → Import/Export → Import` and select `monitors.miniverse.json`.
+- Ozdust (192.168.1.36):
+  - `cp .env.ozdust.sample .env && make check-ports && make up && make smoke`
+  - Import monitors: `Settings → Import/Export → Import` and select `monitors.ozdust.json`.
